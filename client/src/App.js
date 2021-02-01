@@ -62,7 +62,7 @@ const App = () => {
         }
       </div>
       <div className="add-musician">
-        <p>Add new musician</p>
+        <h2>Add new musician</h2>
         <Input labelName="Id" inputValue={formData.id} inputName="id" handleChange={handleChange} />
         <Input labelName="Name" inputValue={formData.name} inputName="name" handleChange={handleChange} />
         <Input labelName="Image Url" inputValue={formData.imageUrl} inputName="imageUrl" handleChange={handleChange} />
