@@ -7,7 +7,7 @@ const typeDefs = gql`
         id: ID!
         name: String!
         imageUrl: String
-        grammyWins: Int
+        grammyWins: String
     }
 
 
@@ -15,7 +15,7 @@ const typeDefs = gql`
         id: ID!
         name: String!
         imageUrl: String
-        grammyWins: Int
+        grammyWins: String
     }
 
     type Query {
@@ -24,7 +24,7 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        addMusician(input: NewMusician): Musician!
+        addMusician(input: NewMusician!): Musician!
     }
 `
 

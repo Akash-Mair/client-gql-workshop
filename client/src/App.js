@@ -1,8 +1,8 @@
-import { useQuery, gql } from '@apollo/client';
-import { useEffect, useState } from 'react'
+import { useQuery, useMutation, gql } from '@apollo/client';
+import { useState } from 'react'
 
 const MUSICIANS = gql`
-  query musicians {
+  query Musicians {
     musicians {
       name
       id
@@ -11,6 +11,18 @@ const MUSICIANS = gql`
     }
   }
 `;
+
+const ADD_MUSICIAN = gql`
+  mutation addMusician($input: NewMusician!) {
+    addMusician(input: $input) {
+      name
+      id
+      grammyWins 
+      imageUrl
+    }
+  }
+
+`
 
 const App = () => {
   const initFormState = {
@@ -22,9 +34,17 @@ const App = () => {
 
   const [formData, setFormData] = useState(initFormState)
   const { loading, error, data } = useQuery(MUSICIANS);
+  const [addMusician, { newMusician }] = useMutation(ADD_MUSICIAN);
+
 
   const handleChange = ({ target: { value, name } }) => {
     setFormData({ ...formData, [name]: value })
+  }
+
+  const submitNewMusician = () => {
+    addMusician({
+      variables: { input: formData },
+    })
   }
 
   if (loading) return <p>Loading....</p>
@@ -46,7 +66,7 @@ const App = () => {
         <p>Add new musician</p>
         <label>
           Id
-          <input value={formData.id} name="id" onChange={(e) => handleChange(e)} />
+          <input value={formData.id} name="id" onChange={handleChange} />
         </label>
         <label>
           Name
@@ -60,6 +80,7 @@ const App = () => {
           Image Url
           <input value={formData.imageUrl} name="imageUrl" onChange={handleChange} />
         </label>
+        <button onClick={submitNewMusician}>Submit</button>
       </div>
     </div>
   );
