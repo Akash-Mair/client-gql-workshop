@@ -7,7 +7,6 @@ const typeDefs = gql`
         id: ID!
         name: String!
         imageUrl: String
-        grammyWins: String
     }
 
 
@@ -15,7 +14,6 @@ const typeDefs = gql`
         id: ID!
         name: String!
         imageUrl: String
-        grammyWins: String
     }
 
     type Query {

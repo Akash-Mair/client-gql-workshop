@@ -3,13 +3,14 @@ import { useState } from 'react'
 import Card from './components/card/Card';
 
 import './App.css'
+import Input from './components/input/Input';
 
 const MUSICIANS = gql`
   query Musicians {
     musicians {
       name
       id
-      grammyWins 
+      # grammyWins 
       imageUrl
     }
   }
@@ -31,7 +32,6 @@ const App = () => {
   const initFormState = {
     id: "",
     name: "",
-    grammyWins: 0,
     imageUrl: ""
   }
 
@@ -61,27 +61,14 @@ const App = () => {
           data.musicians.map(x => <Card musician={x} />)
         }
       </div>
-      <div>
+      <div className="add-musician">
         <p>Add new musician</p>
-        <label>
-          Id
-          <input value={formData.id} name="id" onChange={handleChange} />
-        </label>
-        <label>
-          Name
-          <input value={formData.name} name="name" onChange={handleChange} />
-        </label>
-        <label>
-          Grammy Wins
-          <input value={formData.grammyWins} name="grammyWins" onChange={handleChange} />
-        </label>
-        <label>
-          Image Url
-          <input value={formData.imageUrl} name="imageUrl" onChange={handleChange} />
-        </label>
+        <Input labelName="Id" inputValue={formData.id} inputName="id" handleChange={handleChange} />
+        <Input labelName="Name" inputValue={formData.name} inputName="name" handleChange={handleChange} />
+        <Input labelName="Image Url" inputValue={formData.imageUrl} inputName="imageUrl" handleChange={handleChange} />
         <button onClick={submitNewMusician}>Submit</button>
       </div>
-    </div>
+    </div >
   );
 }
 

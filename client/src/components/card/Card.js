@@ -10,10 +10,6 @@ const Card = ({ musician }) => {
                     <span>Name:</span>
                     <span>{musician.name}</span>
                 </p>
-                <p className="card-field">
-                    <span>Grammy wins:</span>
-                    <span>{musician.grammyWins}</span>
-                </p>
             </div>
         </div >
     )
