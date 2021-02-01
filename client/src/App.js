@@ -5,12 +5,11 @@ import Card from './components/card/Card';
 import './App.css'
 import Input from './components/input/Input';
 
-const MUSICIANS = gql`
+const ALL_MUSICIANS = gql`
   query Musicians {
     musicians {
       name
       id
-      # grammyWins 
       imageUrl
     }
   }
@@ -21,7 +20,6 @@ const ADD_MUSICIAN = gql`
     addMusician(input: $input) {
       name
       id
-      grammyWins 
       imageUrl
     }
   }
@@ -36,8 +34,20 @@ const App = () => {
   }
 
   const [formData, setFormData] = useState(initFormState)
-  const { loading, error, data } = useQuery(MUSICIANS);
-  const [addMusician, { newMusician }] = useMutation(ADD_MUSICIAN);
+  const { loading, error, data } = useQuery(ALL_MUSICIANS);
+  const [addMusician, { newMusician }] = useMutation(
+    ADD_MUSICIAN,
+    {
+      update(cache, { data: { addMusician } }) {
+        const { musicians } = cache.readQuery({ query: ALL_MUSICIANS })
+        cache.writeQuery({
+          query: ALL_MUSICIANS,
+          data: { musicians: musicians.concat(addMusician) }
+        })
+      }
+    }
+
+  );
 
 
   const handleChange = ({ target: { value, name } }) => {
@@ -48,6 +58,7 @@ const App = () => {
     addMusician({
       variables: { input: formData },
     })
+    setFormData(initFormState)
   }
 
   if (loading) return <p>Loading....</p>
