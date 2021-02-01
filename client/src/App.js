@@ -1,5 +1,8 @@
 import { useQuery, useMutation, gql } from '@apollo/client';
 import { useState } from 'react'
+import Card from './components/card/Card';
+
+import './App.css'
 
 const MUSICIANS = gql`
   query Musicians {
@@ -53,15 +56,11 @@ const App = () => {
 
   return (
     <div className="App">
-      {
-        data.musicians.map(x => (
-          <div key={x.id}>
-            <p>{x.name}</p>
-            <p>{x.grammyWins}</p>
-            <img src={x.imageUrl} alt="musician" />
-          </div>
-        ))
-      }
+      <div className="musicians">
+        {
+          data.musicians.map(x => <Card musician={x} />)
+        }
+      </div>
       <div>
         <p>Add new musician</p>
         <label>
