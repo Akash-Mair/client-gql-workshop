@@ -5,6 +5,8 @@
     background-color: white;
     border-radius: 5px;
     margin: 20px;
+    box-shadow: 6px 5px 44px 0px rgba(0,0,0,0.82);
+
 }
 
 .card-img {

@@ -1,0 +1,15 @@
+.navbar {
+    height: 80px;
+    background-color: rgb(120, 71, 255);
+    width:100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    border-bottom: 4px solid rgb(85, 0, 85);
+}
+
+.nav-title {
+    font-size: 30px;
+    color: white;
+    margin: 20px;
+}

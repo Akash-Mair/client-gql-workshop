@@ -4,6 +4,7 @@ import Card from './components/card/Card';
 
 import './App.css'
 import Input from './components/input/Input';
+import NavBar from './components/navbar/NavBar';
 
 const ALL_MUSICIANS = gql`
   query Musicians {
@@ -76,6 +77,7 @@ const App = () => {
 
 	return (
 		<div className="App">
+			<NavBar />
 			<div className="musicians">
 				{data.musicians.map(x => <Card musician={x} />)}
 			</div>

@@ -3,7 +3,7 @@ exports.data = [
     {
         id: 1,
         name: "Michael Jackson",
-        imageUrl: "https://www.songhall.org/images/uploads/exhibits/Michael_Jackson.jpg",
+        imageUrl: "https://i.ytimg.com/vi/1sxC86HxG30/maxresdefault.jpg",
         grammyWins: "13"
     },
     {
