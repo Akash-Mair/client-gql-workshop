@@ -35,7 +35,7 @@ const App = () => {
 
   const [formData, setFormData] = useState(initFormState)
   const { loading, error, data } = useQuery(ALL_MUSICIANS);
-  const [addMusician, { newMusician }] = useMutation(
+  const [addMusician, newMusician] = useMutation(
     ADD_MUSICIAN,
     {
       update(cache, { data: { addMusician } }) {
@@ -57,7 +57,18 @@ const App = () => {
   const submitNewMusician = () => {
     addMusician({
       variables: { input: formData },
-    })
+      optimisticResponse: {
+        __typename: "Mutation",
+        addMusician: {
+          __typename: "Musician",
+          name: formData.name,
+          id: `${Math.random()}`,
+          imageUrl: formData.imageUrl,
+        }
+      }
+    }
+    )
+
     setFormData(initFormState)
   }
 
