@@ -11,7 +11,6 @@ const typeDefs = gql`
 
 
     input NewMusician {
-        id: ID!
         name: String!
         imageUrl: String
     }
@@ -33,6 +32,7 @@ const resolvers = {
     },
     Mutation: {
         addMusician: (_, { input }, { musicians }) => {
+            input.id = `${Math.floor(Math.random() * 10000)}`
             musicians.push(input)
             return input
         }
