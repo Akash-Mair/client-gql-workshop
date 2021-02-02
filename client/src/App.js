@@ -84,16 +84,18 @@ const App = () => {
 			<div className="add-musician">
 				<h2 className="add-musician-title">Add a new musician</h2>
 				<div className="add-musician-form">
-					<Input
-						labelName="Name"
-						inputValue={formData.name}
-						inputName="name"
-						handleChange={handleChange} />
-					<Input
-						labelName="Image Url"
-						inputValue={formData.imageUrl}
-						inputName="imageUrl"
-						handleChange={handleChange} />
+					<div>
+						<Input
+							labelName="Name"
+							inputValue={formData.name}
+							inputName="name"
+							handleChange={handleChange} />
+						<Input
+							labelName="Image Url"
+							inputValue={formData.imageUrl}
+							inputName="imageUrl"
+							handleChange={handleChange} />
+					</div>
 					<button
 						className="add-musician-button"
 						onClick={submitNewMusician}>
