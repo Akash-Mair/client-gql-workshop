@@ -82,18 +82,24 @@ const App = () => {
 				{data.musicians.map(x => <Card musician={x} />)}
 			</div>
 			<div className="add-musician">
-				<h2>Add a new musician</h2>
-				<Input
-					labelName="Name"
-					inputValue={formData.name}
-					inputName="name"
-					handleChange={handleChange} />
-				<Input
-					labelName="Image Url"
-					inputValue={formData.imageUrl}
-					inputName="imageUrl"
-					handleChange={handleChange} />
-				<button onClick={submitNewMusician}>Submit</button>
+				<h2 className="add-musician-title">Add a new musician</h2>
+				<div className="add-musician-form">
+					<Input
+						labelName="Name"
+						inputValue={formData.name}
+						inputName="name"
+						handleChange={handleChange} />
+					<Input
+						labelName="Image Url"
+						inputValue={formData.imageUrl}
+						inputName="imageUrl"
+						handleChange={handleChange} />
+					<button
+						className="add-musician-button"
+						onClick={submitNewMusician}>
+						Submit
+					</button>
+				</div>
 			</div>
 		</div >
 	);

@@ -4,7 +4,14 @@
     margin: 20px;
 }
 
+label {
+    margin-bottom: 10px;
+}
+
 input {
     height: 40px;
-    width: 300px;
+    width: 500px;
+    border: 2px solid rgb(85, 0, 85);
+    border-radius: 5px;
+
 }
