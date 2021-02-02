@@ -2,9 +2,10 @@ import { useQuery, useMutation, gql } from '@apollo/client';
 import { useState } from 'react'
 import Card from './components/card/Card';
 
-import './App.css'
 import Input from './components/input/Input';
 import NavBar from './components/navbar/NavBar';
+
+import './App.css'
 
 const ALL_MUSICIANS = gql`
   query Musicians {
